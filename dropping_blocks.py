@@ -8,7 +8,10 @@ class DroppingBlocks:
         self.static = True
         # self.event_fn = lambda x:None
         self.offset = offset = 600
-        self.create_sprite = lambda:Sprite('sprites/images.png', x=randint(-offset,offset),y=randint(-offset,offset))
+        self.offsetx = offsetx = 20
+
+        self.create_sprite = lambda:Sprite('sprites/log.png',
+                                           x=randint(-offsetx,offsetx),y=randint(-700-offset,-700+offset))
 
         self.blocks = [
             self.create_sprite() for _ in range(3)
@@ -25,7 +28,7 @@ class DroppingBlocks:
         ...
 
     def __call__(self):
-        if not randint(0,100):
+        if not randint(0,10):
             o = self.create_sprite()
             self.physics_obj.append([o])
             self.blocks.append(o)
